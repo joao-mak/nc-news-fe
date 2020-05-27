@@ -35,7 +35,7 @@ li {
   justify-content: center;
 }
 
-.article-list {
+.article-list, .comment-list {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -43,7 +43,7 @@ li {
   justify-content: center;
 }
 
-.article-card {
+.article-card, .comment-card {
   display: flex;
   flex-flow: row nowrap;
   margin: 5px;
@@ -55,5 +55,6 @@ li {
 .vote-arrows {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  border-right: solid 2px #333333;
 }
