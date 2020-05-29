@@ -1,22 +1,19 @@
 import React from 'react';
 import { Link } from '@reach/router'
+import VotesSection from './VotesSection'
 
 const ArticleCard = (props) => {
+    const article = {...props}
     return (
         <div className="article-card">
-            <div className="vote-arrows">
-                <span role="img" aria-label="up-arrow">⬆️</span>
-                <p>{props.votes}</p>
-                <span role="img" aria-label="down-arrow">⬇️</span>
-             </div>
+            <VotesSection {...article}/>
             <article className='article-props'>
-                <p><Link to={`/articles/${props.article_id}`}>{props.title}</Link></p>
-                <p>Topic: {props.topic}</p>
-                {props.body && <p>{props.body}</p>}
-                
-                {
-                    !props.body ?  <p>Comment count: {props.comment_count}</p> : <p></p>
-                }
+                <p className="article-title"><Link to={`/articles/${article.article_id}`}>{article.title}</Link></p>
+                <p>Topic: {article.topic}</p>
+                <p>Author: <Link to={`/users/${article.author}`}>{article.author}</Link></p>
+                {article.body && <p className="article-body">{article.body}</p>}
+                {!article.body ?  <p>Comment count: {Number(article.comment_count)}</p> : <p></p>}
+                <p>Created at: {article.created_at}</p>
             </article>
         </div>
     );

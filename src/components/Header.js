@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({user}) => {
+const Header = ({username}) => {
     return (
         <header className="header">
             <h1>
@@ -9,7 +9,7 @@ const Header = ({user}) => {
                 News
                 <span className="code">/&gt;</span>
             </h1>
-            <h2>Welcome, {user}</h2>
+            <h2>Welcome, {username}</h2>
         </header>
     );
 };

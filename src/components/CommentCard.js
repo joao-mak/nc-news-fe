@@ -1,17 +1,16 @@
 import React from 'react';
+import VotesSection from './VotesSection'
+import {Link} from '@reach/router'
 
 const CommentCard = (props) => {
+    const comment = {...props}
     return (
         <div className="comment-card">
-            <div className="vote-arrows">
-                <span role="img" aria-label="up-arrow">⬆️</span>
-                <p>{props.votes}</p>
-                <span role="img" aria-label="down-arrow">⬇️</span>
-             </div>
+            <VotesSection {...comment}/>
             <article className='comment-props'>
-                <p>Author: {props.author}</p>
-                {props.body && <p>{props.body}</p>}
-                <p>Created at: {props.created_at}</p>
+                <p>Author: <Link to={`/users/${comment.author}`}>{comment.author}</Link></p>
+                {comment.body && <p className="comment-body">{comment.body}</p>}
+                <p>Created at: {comment.created_at}</p>
             </article>
         </div>
     );

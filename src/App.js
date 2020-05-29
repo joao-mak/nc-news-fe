@@ -5,22 +5,27 @@ import NavBar from './components/NavBar';
 import ArticleList from './components/ArticleList'
 import { Router } from '@reach/router';
 import SingleArticle from './components/SingleArticle';
+import ErrHandler from './components/ErrHandler';
+import User from './components/User';
 
 class App extends Component {
 
   state = {
-    user: 'Mak'
+    username: 'jessjelly'
   }
 
   render() {
+    const {username} = this.state
     return (
       <div className="App">
-        <Header user={this.state.user}/>
+        <Header username={username}/>
         <NavBar/>
         <Router>
           <ArticleList path="/"/>
           <ArticleList path="/topics/:topic"/>
-          <SingleArticle path="articles/:article_id"/>
+          <SingleArticle path="/articles/:article_id" username={username}/>
+          <User path="/users/:username"/>
+          <ErrHandler default/>
         </Router>
       </div>
     );

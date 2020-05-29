@@ -17,6 +17,7 @@
   flex-flow: row nowrap;
   justify-content: space-evenly;
   list-style: none;
+  border-bottom: solid 2px #333333;
 }
 
 h1 {
@@ -57,4 +58,28 @@ li {
   flex-flow: column nowrap;
   justify-content: center;
   border-right: solid 2px #333333;
+  padding: 5px;
+}
+
+.article-body, .comment-body {
+  text-align: justify;
+}
+
+.article-title {
+  margin: 5px
+}
+
+.comment-form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.article-props, .comment-props {
+  margin: 20px
+}
+
+#commemt-box {
+  height: 100px;
+  width: 300px;
 }
