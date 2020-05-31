@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Loader from './Loader'
+import Loader from '../Loader'
 import ArticleCard from './ArticleCard'
-import CommentList from './CommentList'
-import * as api from '../utils/api'
-import ErrHandler from './ErrHandler';
+import CommentList from '../Comment/CommentList'
+import * as api from '../../utils/api'
+import ErrHandler from '../ErrHandler';
 
 class SingleArticle extends Component {
     state = {
@@ -14,14 +14,15 @@ class SingleArticle extends Component {
     
     getArticleById = (article_id) => {
         api.fetchArticleById(article_id)
-        .then(({data}) => {
-            this.setState({article: data.article, isLoading: false})
-        }).catch(err => {
-            this.setState({err: err.response.data.msg, isLoading: false})
+        .then((article) => {
+            this.setState({article, isLoading: false})
+        }).catch(({response}) => {
+            this.setState({err: response.data.msg, isLoading: false})
         })
     }
     componentDidMount() {
-        this.getArticleById(this.props.article_id);
+        const { article_id } = this.props;
+        this.getArticleById(article_id);
     }
 
     render() {
@@ -29,11 +30,12 @@ class SingleArticle extends Component {
         const { username } = this.props;
         if (isLoading) return <Loader/>;
         if (err) return <ErrHandler msg={err}/>
-        return (<>
+        return (
+            <div className='single-article'>
                 <ArticleCard {...article}/>
                 <h3>Comments:</h3>
                 <CommentList article_id={article.article_id} username={username}/>
-            </>
+            </div>
         );
     }
 }

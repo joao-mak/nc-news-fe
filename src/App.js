@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
-import ArticleList from './components/ArticleList'
+import ArticleList from './components/Article/ArticleList'
 import { Router } from '@reach/router';
-import SingleArticle from './components/SingleArticle';
+import SingleArticle from './components/Article/SingleArticle';
 import ErrHandler from './components/ErrHandler';
-import User from './components/User';
+import User from './components/User/User';
 
 class App extends Component {
 

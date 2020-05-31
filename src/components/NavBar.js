@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import * as api from '../utils/api'
+import ErrHandler from '../components/ErrHandler'
+import Loader from '../components/Loader'
 
 class NavBar extends Component {
     state = {
-        topics: []
+        topics: [],
+        err: '',
+        isLoading: true
     }
 
     componentDidMount() {
         api.fetchTopics()
-        .then(({data}) => {
-            this.setState({topics: data.topics})
+        .then((topics) => {
+            this.setState({topics, isLoading: false})
+        }).catch(err => {
+            this.setState({err: err.response.data.msg, isLoading: false})
         });
     }
 
     render() {
+        const { topics, err, isLoading } = this.state;
+        if (isLoading) return <Loader/>;
+        if (err) return <ErrHandler msg={err}/>
         return (
-            <nav>
-                <ul className="nav-items">
-                    <li className="nav-link"><Link to='/'><h2>home</h2></Link></li>
-                    {this.state.topics.map((topic) => {
-                    return <li className="nav-link" key={topic.slug}><Link to={`/topics/${topic.slug}`}><h2>{topic.slug}</h2></Link></li>
+            <nav className="nav-bar">
+                    <Link className='link' to='/'>HOME</Link>
+                    {topics.map((topic) => {
+                    return <Link className='link' key={topic.slug} to={`/topics/${topic.slug}`}>{topic.slug.toUpperCase()}</Link>
                 })}
-                </ul>
             </nav>
         );
     }

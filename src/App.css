@@ -12,12 +12,25 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.nav-items {
+.nav-bar {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-evenly;
+  margin: 10px;
   list-style: none;
   border-bottom: solid 2px #333333;
+}
+
+.link {
+  text-decoration: none;
+  background-color: #e9e9e9;
+  color: red;
+  transition: 0.3s;
+}
+.link:hover { 
+  text-decoration: none;
+  background-color: red;
+  color: white;
 }
 
 h1 {
@@ -32,11 +45,13 @@ h2 {
   color: #BA1F31;
 }
 
-li {
+.single-article {
+  display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
 }
 
-.article-list, .comment-list {
+.item-list {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
@@ -44,13 +59,18 @@ li {
   justify-content: center;
 }
 
-.article-card, .comment-card {
+.item-card {
+  width: 500px;
+  background-color: #e9e9e9;
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-around;
+  align-self: center;
   margin: 5px;
   padding: 5px;
   border: 2px solid #333333;
   border-radius: 20px;
+  box-shadow: 5px 5px rgb(172, 172, 172);
 }
 
 .vote-arrows {
@@ -61,12 +81,8 @@ li {
   padding: 5px;
 }
 
-.article-body, .comment-body {
+.item-body {
   text-align: justify;
-}
-
-.article-title {
-  margin: 5px
 }
 
 .comment-form {
@@ -75,8 +91,8 @@ li {
   align-items: center;
 }
 
-.article-props, .comment-props {
-  margin: 20px
+.item-props {
+  margin: 20px;
 }
 
 #commemt-box {

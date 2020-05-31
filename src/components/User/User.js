@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Loader from './Loader'
-import ErrHandler from './ErrHandler'
-import * as api from '../utils/api'
+import Loader from '../Loader'
+import ErrHandler from '../ErrHandler'
+import * as api from '../../utils/api'
 import UserCard from './UserCard'
 
 class User extends Component {
@@ -13,18 +13,20 @@ class User extends Component {
     
     getUserByUsername = (username) => {
         api.fetchUserByUsername(username)
-        .then(({data}) => {
-            this.setState({user: data.user, isLoading: false})
-        }).catch(err => {
-            this.setState({err: err.response.data.msg, isLoading: false})
+        .then((user) => {
+            this.setState({user, isLoading: false})
+        }).catch(({response}) => {
+            this.setState({err: response.data.msg, isLoading: false})
         })
     }
     componentDidMount() {
-        this.getUserByUsername(this.props.username);
+        const { username } = this.props;
+        this.getUserByUsername(username);
     }
 
     render() {
         const {user, isLoading, err} = this.state
+        console.log(user)
         if (isLoading) return <Loader/>;
         if (err) return <ErrHandler msg={err}/>
         return <UserCard {...user}/>;
