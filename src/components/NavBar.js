@@ -15,8 +15,8 @@ class NavBar extends Component {
         api.fetchTopics()
         .then((topics) => {
             this.setState({topics, isLoading: false})
-        }).catch(err => {
-            this.setState({err: err.response.data.msg, isLoading: false})
+        }).catch(({response}) => {
+            this.setState({err: response.data.msg, isLoading: false})
         });
     }
 

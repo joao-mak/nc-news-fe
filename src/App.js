@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <Header username={username}/>
         <NavBar/>
-        <Router>
+        <Router primary={false}>
           <ArticleList path="/"/>
           <ArticleList path="/topics/:topic"/>
           <SingleArticle path="/articles/:article_id" username={username}/>

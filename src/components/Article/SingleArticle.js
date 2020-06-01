@@ -33,7 +33,6 @@ class SingleArticle extends Component {
         return (
             <div className='single-article'>
                 <ArticleCard {...article}/>
-                <h3>Comments:</h3>
                 <CommentList article_id={article.article_id} username={username}/>
             </div>
         );

@@ -17,7 +17,7 @@ class VotesSection extends Component {
         this.setState(({newVotes}) => {
             return { newVotes: newVotes + incValue }
         })
-        this.incrementVotes(incValue)
+        this.incrementVotes(incValue);
     }
     
 

@@ -9,9 +9,9 @@ export const fetchTopics = () => {
     })
 }
 
-export const fetchArticles = (topic) => {
+export const fetchArticles = (topic, sortParam) => {
     return axios.get(`${baseURL}/articles`, {
-        params: {topic}
+        params: {sortParam, topic}
     }).then(({data}) => {
         return data.articles;
     })

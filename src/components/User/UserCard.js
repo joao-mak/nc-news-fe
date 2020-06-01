@@ -6,7 +6,7 @@ const UserCard = (props) => {
         <section className="user-card">
             <p>Name: {user.name}</p>
             <p>Username: {user.username}</p>
-            <img alt='user-avatar'src={user.avatar_url} width="300" height="300"/>
+            <img alt='user-avatar'src={user.avatar_url} width="200" height="200"/>
         </section>
     );
 };

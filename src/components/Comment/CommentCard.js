@@ -11,7 +11,7 @@ const CommentCard = (props) => {
                 <p>Author: <Link className="link" to={`/users/${comment.author}`}>{comment.author}</Link></p>
                 <p className="item-body">{comment.body}</p>
                 <p>Created at: {comment.created_at}</p>
-                {(comment.author === comment.username && <button onClick={(event) => {comment.handleDelete(comment.comment_id)}}>delete</button>)}
+                {(comment.author === comment.username && <button className='button' onClick={(event) => {comment.handleDelete(comment.comment_id)}}>delete</button>)}
             </article>
         </div>
     );

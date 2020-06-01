@@ -11,9 +11,9 @@ class ArticleList extends Component {
         err: ''
     }
 
-    getArticles = () => {
+    getArticles = (sortParam) => {
         const { topic } = this.props;
-        api.fetchArticles(topic)
+        api.fetchArticles(topic, sortParam)
         .then((articles) => {
             this.setState({articles, isLoading: false})
         }).catch(({response}) => {
@@ -22,11 +22,8 @@ class ArticleList extends Component {
     }
 
     handleSortChange = (event) => {
-        const sortParam = document.getElementById("sortBy").value;
-        this.setState({
-            articles: this.state.articles.sort((article1, article2) => {
-                return (article1[sortParam] > article2[sortParam] ? -1 : 1)}), 
-            isLoading: false})
+        const sortParam = event.target.value;
+        this.getArticles(sortParam);
     }
 
     componentDidMount() {

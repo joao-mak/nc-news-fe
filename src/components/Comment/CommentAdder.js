@@ -20,19 +20,14 @@ class CommentAdder extends Component {
     
     render() {
         return (
-            <>
-                <h3>Post a comment:</h3>
+            <div className="post-section">
+                <p>Comments:</p>
+                <p>Post a comment:</p>
                 <form className="comment-form">
-                    <input id="commemt-box" 
-                           onChange={this.handleChange} 
-                           name="body" 
-                           type="textbox"
-                           autoComplete="off"
-                           value={this.state.body}>
-                    </input>
-                    <button onClick={this.handleSubmit} type='submit'>submit</button>
+                    <textarea id="commemt-box" onChange={this.handleChange} name="body" autoComplete="off" value={this.state.body} required></textarea>
+                    <button className='button' onClick={this.handleSubmit} type='submit'>submit</button>
                 </form>
-            </>
+            </div>
         );
     }
 }
